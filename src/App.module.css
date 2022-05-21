@@ -1,0 +1,10 @@
+.diary {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.diary h1 {
+  font-size: 4rem;
+  text-align: center;
+  margin: 2rem 0 4rem;
+}
