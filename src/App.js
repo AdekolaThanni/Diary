@@ -11,14 +11,22 @@ const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.addNew:
       state = [action.item, ...state];
+      localStorage.setItem("diaryList", JSON.stringify(state));
       return state;
     default:
       console.log("NO ACTION");
   }
 };
 
+const getStoredItems = () => {
+  const storedDiary = JSON.parse(localStorage.getItem("diaryList") || "[]");
+  return storedDiary;
+};
+
+getStoredItems();
+
 function App() {
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, getStoredItems());
 
   const addItem = (item) => {
     dispatch({ type: ACTIONS.addNew, item });
